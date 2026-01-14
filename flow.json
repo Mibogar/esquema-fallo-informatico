@@ -1,1 +1,35 @@
+{
+  "start": "inicio",
+  "nodes": {
+    "inicio": {
+      "title": "ESQUEMA DE ACTUACIÓN ANTE UN FALLO INFORMÁTICO",
+      "body": "Pulsa empezar para iniciar el protocolo.",
+      "buttons": [
+        { "label": "EMPEZAR", "style": "primary", "next": "gestlab" }
+      ]
+    },
+    "gestlab": {
+      "title": "¿FUNCIONA GESTLAB?",
+      "body": "Comprueba si puedes acceder correctamente al programa.",
+      "buttons": [
+        { "label": "SÍ", "style": "yes", "next": "labflow" },
+        { "label": "NO", "style": "no", "next": "informatica" }
+      ]
+    },
+    "labflow": {
+      "title": "¿FUNCIONA LABFLOW?",
+      "body": "Comprueba si la aplicación responde con normalidad.",
+      "buttons": [
+        { "label": "REINICIAR", "style": "primary", "next": "inicio" }
+      ]
+    },
+    "informatica": {
+      "title": "LLAMAR A INFORMÁTICA DEL HOSPITAL",
+      "body": "Sigue el procedimiento interno de contacto.",
+      "buttons": [
+        { "label": "REINICIAR", "style": "primary", "next": "inicio" }
+      ]
+    }
+  }
+}
 
