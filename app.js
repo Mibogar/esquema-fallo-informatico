@@ -1,26 +1,17 @@
-let flow;
+const app = document.getElementById("app");
+app.innerHTML = "<p>Cargando flow.json...</p>";
 
-function render(id) {
-  const node = flow.nodes[id];
-  const app = document.getElementById("app");
-
-  const buttons = node.buttons.map(b =>
-    `<button class="${b.style}" onclick="render('${b.next}')">${b.label}</button>`
-  ).join("");
-
-  app.innerHTML = `
-    <div class="card">
-      <h1>${node.title}</h1>
-      <p>${node.body}</p>
-      ${buttons}
-    </div>
-  `;
-}
-
-fetch("flow.json")
-  .then(r => r.json())
-  .then(data => {
-    flow = data;
-    render(flow.start);
+fetch("./flow.json", { cache: "no-store" })
+  .then(r => {
+    if (!r.ok) throw new Error("No se pudo cargar flow.json (HTTP " + r.status + ")");
+    return r.json();
+  })
+  .then(flow => {
+    app.innerHTML = `
+      <h1>${flow.nodes[flow.start].title}</h1>
+      <p>flow.json cargado OK ✅</p>
+    `;
+  })
+  .catch(err => {
+    app.innerHTML = `<h1>Error</h1><pre>${err.message}</pre>`;
   });
-
