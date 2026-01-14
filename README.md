@@ -1,0 +1,1 @@
+# esquema-fallo-informatico
