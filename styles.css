@@ -1,74 +1,190 @@
 :root{
   --bg:#0b1220;
-  --card:#121b2e;
+  --bg2:#0f172a;
+  --card: rgba(18,27,46,.96);
   --text:#eaf0ff;
   --muted:#b9c5e6;
-  --border:rgba(255,255,255,.12);
-  --shadow: 0 16px 40px rgba(0,0,0,.35);
+  --border:rgba(255,255,255,.14);
+  --shadow: 0 18px 46px rgba(0,0,0,.38);
+
+  --primary: rgba(99,102,241,.28);
+  --primaryBorder: rgba(99,102,241,.42);
+
+  --yes: rgba(34,197,94,.26);
+  --yesBorder: rgba(34,197,94,.40);
+
+  --no: rgba(239,68,68,.26);
+  --noBorder: rgba(239,68,68,.40);
+
+  --secondary: rgba(148,163,184,.16);
+  --secondaryBorder: rgba(148,163,184,.26);
+
+  --focus: rgba(56,189,248,.55);
 }
 
-*{box-sizing:border-box}
+/* Base */
+*{ box-sizing:border-box; }
+
+html, body{
+  height:100%;
+}
+
 body{
   margin:0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  background: radial-gradient(1200px 800px at 20% 10%, #1b2a55 0%, var(--bg) 55%);
-  color:var(--text);
+  color: var(--text);
+  background:
+    radial-gradient(1200px 800px at 18% 12%, #1b2a55 0%, var(--bg) 56%),
+    radial-gradient(900px 600px at 86% 22%, #3a1d62 0%, transparent 60%),
+    linear-gradient(180deg, var(--bg2), var(--bg));
 }
+
+/* App container */
 #app{
   min-height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
-  padding:18px;
+  padding: 18px;
 }
+
+/* Card */
 .card{
-  width:min(820px, 100%);
-  background:rgba(18,27,46,.95);
-  border:1px solid var(--border);
-  border-radius:18px;
+  width: min(900px, 100%);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
   box-shadow: var(--shadow);
-  padding:18px;
+  padding: 18px;
 }
+
+/* Top bar */
 .topbar{
   display:flex;
+  align-items:center;
   justify-content:space-between;
-  gap:10px;
-  margin-bottom:10px;
+  gap: 10px;
+  margin-bottom: 10px;
 }
+
+.topbar .btn.ghost{
+  width: auto;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-weight: 750;
+  border-radius: 14px;
+}
+
+/* Title + body */
 .title{
-  font-size: clamp(24px, 3.8vw, 42px);
-  line-height:1.1;
+  font-size: clamp(24px, 3.8vw, 44px);
+  line-height: 1.08;
   margin: 10px 0 10px 0;
+  letter-spacing: .2px;
 }
+
 .body{
-  margin:0 0 16px 0;
+  margin: 0 0 14px 0;
   color: var(--muted);
   font-size: 16px;
-  line-height:1.45;
+  line-height: 1.5;
+
+  /* CLAVE: respeta los saltos de línea del flow.json */
+  white-space: pre-wrap;
 }
+
+/* Buttons layout */
 .buttons{
   display:grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap:12px;
-}
-@media (max-width: 520px){
-  .buttons{grid-template-columns: 1fr;}
+  gap: 12px;
+  margin-top: 12px;
 }
 
+@media (max-width: 560px){
+  .card{ padding: 14px; border-radius: 18px; }
+  .buttons{ grid-template-columns: 1fr; }
+}
+
+/* Buttons */
 .btn{
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:16px 16px;
+  appearance: none;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px 16px;
+  cursor: pointer;
+
   font-size: 18px;
-  font-weight: 800;
-  cursor:pointer;
+  font-weight: 850;
+  letter-spacing: .2px;
+
   background: rgba(255,255,255,.08);
   color: var(--text);
+
+  transition: transform .04s ease, filter .12s ease, background .12s ease, border-color .12s ease;
+  text-align: center;
 }
-.btn:active{transform: translateY(1px);}
-.btn.primary{background: rgba(99,102,241,.25);}
-.btn.secondary{background: rgba(148,163,184,.15);}
-.btn.yes{background: rgba(34,197,94,.22); border-color: rgba(34,197,94,.35);}
-.btn.no{background: rgba(239,68,68,.22); border-color: rgba(239,68,68,.35);}
-.btn.ghost{background: transparent; font-size:14px; padding:10px 12px; font-weight:700;}
-.btn[disabled]{opacity:.5; cursor:not-allowed;}
+
+.btn:active{
+  transform: translateY(1px);
+}
+
+.btn:hover{
+  filter: brightness(1.08);
+}
+
+/* Focus visible (teclado/acc) */
+.btn:focus{
+  outline: none;
+}
+.btn:focus-visible{
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* Variants */
+.btn.primary{
+  background: var(--primary);
+  border-color: var(--primaryBorder);
+}
+
+.btn.yes{
+  background: var(--yes);
+  border-color: var(--yesBorder);
+  color: #07150c;
+}
+
+.btn.no{
+  background: var(--no);
+  border-color: var(--noBorder);
+}
+
+.btn.secondary{
+  background: var(--secondary);
+  border-color: var(--secondaryBorder);
+}
+
+.btn.ghost{
+  background: transparent;
+  border-color: var(--border);
+}
+
+/* Disabled */
+.btn[disabled],
+.btn[aria-disabled="true"]{
+  opacity: .55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Optional: make “Ayuda” button less dominant if you keep it as secondary */
+#helpBtn.btn.secondary{
+  width: 100%;
+  margin-top: 6px;
+}
+
+/* Optional: nicer error screen if app.js prints <pre> */
+pre{
+  white-space: pre-wrap;
+  word-break: break-word;
+}
