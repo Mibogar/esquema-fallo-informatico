@@ -20,31 +20,42 @@ function render(nodeId, pushHistory = true) {
   if (!node) {
     app.innerHTML = `
       <div class="card">
-        <h1>Error</h1>
-        <p>No existe el nodo: <b>${escapeHtml(nodeId)}</b></p>
+        <div class="topbar">
+          <button class="btn ghost" disabled>◀ Volver</button>
+          <button class="btn ghost" id="resetBtn">⟲ Reiniciar</button>
+        </div>
+
+        <h1 class="title">Error</h1>
+        <p class="body">No existe el nodo: <b>${escapeHtml(nodeId)}</b></p>
+
         <div class="buttons">
           <button class="btn secondary" id="goHome">Reiniciar</button>
         </div>
       </div>
     `;
-    document.getElementById("goHome").onclick = () => render(FLOW.start, false);
+    document.getElementById("resetBtn").onclick = () => {
+      historyStack.length = 0;
+      render(FLOW.start, false);
+    };
+    document.getElementById("goHome").onclick = () => {
+      historyStack.length = 0;
+      render(FLOW.start, false);
+    };
     return;
   }
 
-  if (pushHistory && currentId) {
-    historyStack.push(currentId);
-  }
+  if (pushHistory && currentId) historyStack.push(currentId);
   currentId = nodeId;
 
-  /* --- Botón AYUDA (solo si existe node.help) --- */
+  /* --- Botón AYUDA (pequeño, a la izquierda, debajo del texto) --- */
   const helpBtnHtml = node.help
-    ? `<button class="btn secondary" id="helpBtn">Ayuda</button>`
+    ? `<div class="helpRow"><button class="btn help" id="helpBtn">Ayuda</button></div>`
     : "";
 
   /* --- Botones principales del nodo --- */
   const buttonsHtml = (node.buttons || [])
     .map(
-      (b, i) => `
+      (b) => `
       <button class="btn ${escapeHtml(b.style || "primary")}"
               data-next="${escapeHtml(b.next)}">
         ${escapeHtml(b.label)}
@@ -102,12 +113,9 @@ async function init() {
   app.innerHTML = "<div style='padding:20px;font-family:Arial'>Cargando...</div>";
 
   const res = await fetch("./flow.json", { cache: "no-store" });
-  if (!res.ok) {
-    throw new Error(`No se pudo cargar flow.json (HTTP ${res.status})`);
-  }
+  if (!res.ok) throw new Error(`No se pudo cargar flow.json (HTTP ${res.status})`);
 
   FLOW = await res.json();
-
   if (!FLOW.start || !FLOW.nodes) {
     throw new Error("flow.json no tiene el formato esperado (falta start o nodes)");
   }
@@ -120,9 +128,14 @@ init().catch((err) => {
   app.innerHTML = `
     <div style="padding:20px;font-family:Arial">
       <h1 style="color:#ef4444">ERROR</h1>
-      <pre style="white-space:pre-wrap;background:#111827;color:#e5e7eb;padding:12px;border-radius:8px">
-${escapeHtml(err.message)}
-      </pre>
+      <pre style="white-space:pre-wrap;background:#111827;color:#e5e7eb;padding:12px;border-radius:8px">${escapeHtml(err.message)}</pre>
     </div>
   `;
 });
+
+/* --- PWA: registrar Service Worker (lo añadiremos en el siguiente paso) --- */
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js").catch(() => {});
+  });
+}
