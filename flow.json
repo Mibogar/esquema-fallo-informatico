@@ -177,4 +177,14 @@
 
     "help_reset_gestlab_labflow": {
       "title": "AYUDA — Resetear conexión GESTLAB–LABFLOW",
-      "body": "Entrar en Gestlab:\n- Procesos -> Conexión con analizadores\n- Buscar LABFLOW en la lista de la izquierda y hacer clic sobre él\n- Desactivar conexión\n- Ver comunicación -> última línea: “Conector No Activo” y arriba pone “Inicio”\n- Esperar 10 segundos\n- Activar conexión\n- Tras ~30 segundos arriba debe cambiar de “Inicio” a “Conectado” y actualizarse la lista\n\nPara verificar:\n- Reenviar resultados desde el analizador:\n  Rutina -> Resultados -> buscar nº petición -> seleccionar -> Bola -> Enviar a Host.\n- Esperar a
+      "body": "Entrar en Gestlab:\n- Procesos -> Conexión con analizadores\n- Buscar LABFLOW en la lista de la izquierda y hacer clic sobre él\n- Desactivar conexión\n- Ver comunicación -> última línea: “Conector No Activo” y arriba pone “Inicio”\n- Esperar 10 segundos\n- Activar conexión\n- Tras ~30 segundos arriba debe cambiar de “Inicio” a “Conectado” y actualizarse la lista\n\nPara verificar:\n- Reenviar resultados desde el analizador:\n  Rutina -> Resultados -> buscar nº petición -> seleccionar -> Bola -> Enviar a Host.\n- Esperar al menos 3 minutos y comprobar en Gestlab si se ha recibido.",
+      "buttons": []
+    },
+
+    "help_llamar_gestlab": {
+      "title": "AYUDA — Llamar GESTLAB",
+      "body": "EN HORARIO LABORAL:\n- De lunes a viernes de 08:00 a 18:00\n- Llamar al técnico de Gestlab (ver contacto interno)\n\nFUERA DEL HORARIO LABORAL:\n- De lunes a viernes de 18:00 a 08:00\n- Sábados, domingos y festivos\n- Llamar a SAT de Gestlab (ver contacto interno)\n\nProbablemente haya que reiniciar las comunicaciones “C” y “P” desde Gestlab.",
+      "buttons": []
+    }
+  }
+}
