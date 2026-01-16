@@ -1,33 +1,113 @@
 {
   "start": "inicio",
+
   "nodes": {
     "inicio": {
       "title": "ESQUEMA DE ACTUACIÓN ANTE UN FALLO INFORMÁTICO",
-      "body": "Pulsa empezar para iniciar el protocolo.",
+      "body": "Sigue este protocolo paso a paso. Usa VOLVER si te equivocas o REINICIAR si necesitas empezar de nuevo.",
       "buttons": [
         { "label": "EMPEZAR", "style": "primary", "next": "gestlab" }
       ]
     },
+
     "gestlab": {
       "title": "¿FUNCIONA GESTLAB?",
-      "body": "Comprueba si puedes acceder correctamente al programa.",
+      "body": "Comprueba si puedes acceder al programa. Si introduciendo usuario y contraseña correctamente el programa no entra, se queda colgado o da error, considera que NO funciona.",
       "buttons": [
         { "label": "SÍ", "style": "yes", "next": "labflow" },
-        { "label": "NO", "style": "no", "next": "informatica" }
+        { "label": "NO", "style": "no", "next": "informatica_1" }
       ]
     },
+
     "labflow": {
       "title": "¿FUNCIONA LABFLOW?",
-      "body": "Comprueba si la aplicación responde con normalidad.",
+      "body": "Comprueba si la aplicación se abre y responde con normalidad.",
       "buttons": [
-        { "label": "REINICIAR", "style": "primary", "next": "inicio" }
+        { "label": "SÍ", "style": "yes", "next": "cobas_racks" },
+        { "label": "NO", "style": "no", "next": "informatica_2" }
       ]
     },
-    "informatica": {
-      "title": "LLAMAR A INFORMÁTICA DEL HOSPITAL",
-      "body": "Sigue el procedimiento interno de contacto.",
+
+    "cobas_racks": {
+      "title": "¿COBAS PRO RECONOCE Y ANALIZA RACKS?",
+      "body": "Comprueba si el analizador reconoce los racks y comienza el análisis.",
       "buttons": [
-        { "label": "REINICIAR", "style": "primary", "next": "inicio" }
+        { "label": "SÍ", "style": "yes", "next": "transmite_gestlab" },
+        { "label": "NO", "style": "no", "next": "reset_labflow_analizador" }
+      ]
+    },
+
+    "reset_labflow_analizador": {
+      "title": "RESETEAR CONEXIÓN LABFLOW – ANALIZADOR",
+      "body": "Realiza el procedimiento de reseteo de la conexión entre Labflow y el analizador.",
+      "buttons": [
+        { "label": "CONTINUAR", "style": "primary", "next": "llamar_roche" }
+      ]
+    },
+
+    "llamar_roche": {
+      "title": "LLAMAR A ROCHE",
+      "body": "Contacta con el servicio técnico de Roche para comunicar la incidencia.",
+      "buttons": [
+        { "label": "CONTINUAR", "style": "primary", "next": "transmite_gestlab" }
+      ]
+    },
+
+    "transmite_gestlab": {
+      "title": "¿COBAS PRO TRANSMITE A GESTLAB?",
+      "body": "Comprueba si los resultados del analizador se transmiten correctamente a Gestlab.",
+      "buttons": [
+        { "label": "SÍ", "style": "yes", "next": "todo_ok" },
+        { "label": "NO", "style": "no", "next": "transmite_labflow" }
+      ]
+    },
+
+    "transmite_labflow": {
+      "title": "¿EL ANALIZADOR TRANSMITE A LABFLOW?",
+      "body": "Comprueba si el analizador transmite resultados a Labflow.",
+      "buttons": [
+        { "label": "SÍ", "style": "yes", "next": "reset_gestlab_labflow" },
+        { "label": "NO", "style": "no", "next": "llamar_gestlab" }
+      ]
+    },
+
+    "reset_gestlab_labflow": {
+      "title": "RESETEAR CONEXIÓN GESTLAB – LABFLOW",
+      "body": "Realiza el procedimiento de reseteo de la conexión entre Gestlab y Labflow.",
+      "buttons": [
+        { "label": "CONTINUAR", "style": "primary", "next": "todo_ok" }
+      ]
+    },
+
+    "llamar_gestlab": {
+      "title": "LLAMAR A GESTLAB",
+      "body": "Contacta con el soporte de Gestlab para comunicar la incidencia.",
+      "buttons": [
+        { "label": "CONTINUAR", "style": "primary", "next": "todo_ok" }
+      ]
+    },
+
+    "todo_ok": {
+      "title": "TODO OK",
+      "body": "El sistema vuelve a funcionar con normalidad.",
+      "buttons": [
+        { "label": "REINICIAR", "style": "secondary", "next": "inicio" }
+      ]
+    },
+
+    "informatica_1": {
+      "title": "LLAMAR A INFORMÁTICA DEL HOSPITAL (1)",
+      "body": "Aquí se accederá en el futuro al Protocolo de caída informática (documento 1).",
+      "buttons": [
+        { "label": "REINICIAR", "style": "secondary", "next": "inicio" }
+      ]
+    },
+
+    "informatica_2": {
+      "title": "LLAMAR A INFORMÁTICA DEL HOSPITAL (2)",
+      "body": "Aquí se accederá en el futuro al Protocolo de caída informática (documento 2).",
+      "buttons": [
+        { "label": "REINICIAR", "style": "secondary", "next": "inicio" }
       ]
     }
   }
