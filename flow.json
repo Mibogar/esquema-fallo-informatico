@@ -1,10 +1,9 @@
 {
   "start": "inicio",
-
   "nodes": {
     "inicio": {
       "title": "ESQUEMA DE ACTUACIÓN ANTE UN FALLO INFORMÁTICO",
-      "body": "Sigue este protocolo paso a paso. Usa VOLVER si te equivocas o REINICIAR si necesitas empezar de nuevo.",
+      "body": "Sigue el protocolo paso a paso.\nUsa VOLVER para retroceder un paso.\nUsa REINICIAR para empezar de cero.",
       "buttons": [
         { "label": "EMPEZAR", "style": "primary", "next": "gestlab" }
       ]
@@ -12,7 +11,8 @@
 
     "gestlab": {
       "title": "¿FUNCIONA GESTLAB?",
-      "body": "Comprueba si puedes acceder al programa. Si introduciendo usuario y contraseña correctamente el programa no entra, se queda colgado o da error, considera que NO funciona.",
+      "body": "Comprueba si puedes entrar y operar con normalidad.",
+      "help": "help_gestlab",
       "buttons": [
         { "label": "SÍ", "style": "yes", "next": "labflow" },
         { "label": "NO", "style": "no", "next": "informatica_1" }
@@ -21,7 +21,8 @@
 
     "labflow": {
       "title": "¿FUNCIONA LABFLOW?",
-      "body": "Comprueba si la aplicación se abre y responde con normalidad.",
+      "body": "Comprueba si puedes entrar y operar con normalidad.",
+      "help": "help_labflow",
       "buttons": [
         { "label": "SÍ", "style": "yes", "next": "cobas_racks" },
         { "label": "NO", "style": "no", "next": "informatica_2" }
@@ -29,8 +30,9 @@
     },
 
     "cobas_racks": {
-      "title": "¿COBAS PRO RECONOCE Y ANALIZA RACKS?",
-      "body": "Comprueba si el analizador reconoce los racks y comienza el análisis.",
+      "title": "En Cobas Pro: ¿reconoce y analiza racks?",
+      "body": "Comprueba si reconoce racks y analiza. Si no, sigue el procedimiento.",
+      "help": "help_cobas_racks",
       "buttons": [
         { "label": "SÍ", "style": "yes", "next": "transmite_gestlab" },
         { "label": "NO", "style": "no", "next": "reset_labflow_analizador" }
@@ -38,24 +40,27 @@
     },
 
     "reset_labflow_analizador": {
-      "title": "RESETEAR CONEXIÓN LABFLOW – ANALIZADOR",
-      "body": "Realiza el procedimiento de reseteo de la conexión entre Labflow y el analizador.",
+      "title": "Resetear conexión LABFLOW–ANALIZADOR",
+      "body": "Reinicia la conexión desde Labflow (ICA).",
+      "help": "help_reset_labflow_analizador",
       "buttons": [
         { "label": "CONTINUAR", "style": "primary", "next": "llamar_roche" }
       ]
     },
 
     "llamar_roche": {
-      "title": "LLAMAR A ROCHE",
-      "body": "Contacta con el servicio técnico de Roche para comunicar la incidencia.",
+      "title": "Llamar a ROCHE",
+      "body": "Abrir incidencia (Navify) o llamar por teléfono.",
+      "help": "help_llamar_roche",
       "buttons": [
         { "label": "CONTINUAR", "style": "primary", "next": "transmite_gestlab" }
       ]
     },
 
     "transmite_gestlab": {
-      "title": "¿COBAS PRO TRANSMITE A GESTLAB?",
-      "body": "Comprueba si los resultados del analizador se transmiten correctamente a Gestlab.",
+      "title": "¿Cobas Pro transmite resultados a Gestlab?",
+      "body": "Compara resultados en analizador vs Gestlab.",
+      "help": "help_transmite_gestlab",
       "buttons": [
         { "label": "SÍ", "style": "yes", "next": "todo_ok" },
         { "label": "NO", "style": "no", "next": "transmite_labflow" }
@@ -63,8 +68,9 @@
     },
 
     "transmite_labflow": {
-      "title": "¿EL ANALIZADOR TRANSMITE A LABFLOW?",
-      "body": "Comprueba si el analizador transmite resultados a Labflow.",
+      "title": "¿El analizador transmite resultados a Labflow?",
+      "body": "Comprueba si en Labflow aparecen pruebas/resultados de la petición.",
+      "help": "help_transmite_labflow",
       "buttons": [
         { "label": "SÍ", "style": "yes", "next": "reset_gestlab_labflow" },
         { "label": "NO", "style": "no", "next": "llamar_gestlab" }
@@ -72,16 +78,18 @@
     },
 
     "reset_gestlab_labflow": {
-      "title": "RESETEAR CONEXIÓN GESTLAB – LABFLOW",
-      "body": "Realiza el procedimiento de reseteo de la conexión entre Gestlab y Labflow.",
+      "title": "Resetear conexión GESTLAB–LABFLOW",
+      "body": "Reinicia la conexión desde Gestlab y verifica reenviando a Host.",
+      "help": "help_reset_gestlab_labflow",
       "buttons": [
         { "label": "CONTINUAR", "style": "primary", "next": "todo_ok" }
       ]
     },
 
     "llamar_gestlab": {
-      "title": "LLAMAR A GESTLAB",
-      "body": "Contacta con el soporte de Gestlab para comunicar la incidencia.",
+      "title": "Llamar a GESTLAB",
+      "body": "Contacta soporte (horario laboral / fuera de horario).",
+      "help": "help_llamar_gestlab",
       "buttons": [
         { "label": "CONTINUAR", "style": "primary", "next": "todo_ok" }
       ]
@@ -96,19 +104,77 @@
     },
 
     "informatica_1": {
-      "title": "LLAMAR A INFORMÁTICA DEL HOSPITAL (1)",
-      "body": "Aquí se accederá en el futuro al Protocolo de caída informática (documento 1).",
+      "title": "Llamar INFORMÁTICA del HOSPITAL (1)",
+      "body": "Incidencia probable global/servidores.\nSigue instrucciones del servicio.",
+      "help": "help_informatica_1",
       "buttons": [
         { "label": "REINICIAR", "style": "secondary", "next": "inicio" }
       ]
     },
 
     "informatica_2": {
-      "title": "LLAMAR A INFORMÁTICA DEL HOSPITAL (2)",
-      "body": "Aquí se accederá en el futuro al Protocolo de caída informática (documento 2).",
+      "title": "Llamar INFORMÁTICA del HOSPITAL (2)",
+      "body": "Probable reinicio de servidor de Labflow.\nSigue instrucciones del servicio.",
+      "help": "help_informatica_2",
       "buttons": [
         { "label": "REINICIAR", "style": "secondary", "next": "inicio" }
       ]
-    }
-  }
-}
+    },
+
+    "help_gestlab": {
+      "title": "AYUDA — ¿FUNCIONA GESTLAB?",
+      "body": "Se refiere a si se puede entrar al programa.\n\nPara saberlo:\n- Escritorio -> Aplicaciones de equipo -> Gestlab Producción -> Introducir usuario y contraseña.\n\nFunciona si:\n- Se ha puesto usuario y contraseña correctamente y entra en el programa y se puede realizar acciones.\n\nNo funciona si:\n- Habiendo puesto el usuario y contraseña correctamente, se queda colgado o da un error.",
+      "buttons": []
+    },
+
+    "help_informatica_1": {
+      "title": "AYUDA — Llamar INFORMÁTICA del HOSPITAL (1)",
+      "body": "Probablemente haya que reiniciar servidores o sea alguna causa informática global del hospital.\nEsperaremos a que nos den instrucciones.\n\nEN HORARIO LABORAL:\n- De lunes a viernes de 08:00 a 15:00\n- Extensión/Contacto: 537 403\n\nFUERA DEL HORARIO LABORAL:\n- De lunes a viernes de 15:00 a 08:00\n- Sábados, domingos y festivos (guardia localizada)\n- Extensión/Contacto: 444 764",
+      "buttons": []
+    },
+
+    "help_labflow": {
+      "title": "AYUDA — ¿FUNCIONA LABFLOW?",
+      "body": "Se refiere a si se puede entrar al programa.\n\nPara saberlo:\n- Escritorio -> Aplicaciones de equipo -> INFINITY o LABFLOW -> Introducir usuario y contraseña.\n\n(⚠️ Credenciales: mejor mantenerlas en documento interno.)\n\nFunciona normalmente si:\n- Se ha puesto usuario y contraseña correctamente y entra en el programa y se puede realizar acciones.\n\nNo funciona si:\n- Habiendo puesto el usuario y contraseña correctamente, se queda colgado o da un error.",
+      "buttons": []
+    },
+
+    "help_informatica_2": {
+      "title": "AYUDA — Llamar INFORMÁTICA del HOSPITAL (2)",
+      "body": "Probablemente haya que reiniciar servidor de Labflow.\nEsperaremos a que nos den instrucciones.\n\nEN HORARIO LABORAL:\n- De lunes a viernes de 08:00 a 15:00\n- Extensión/Contacto: 537 403\n\nFUERA DEL HORARIO LABORAL:\n- De lunes a viernes de 15:00 a 08:00\n- Sábados, domingos y festivos (guardia localizada)\n- Extensión/Contacto: 444 764",
+      "buttons": []
+    },
+
+    "help_cobas_racks": {
+      "title": "AYUDA — Cobas Pro reconoce y analiza racks",
+      "body": "1) Comprobar si la petición está disponible en Gestlab.\n- Entramos a Gestlab: Escritorio -> Aplicaciones de equipo -> Gestlab Producción -> Introducir usuario y contraseña.\n- Vamos al campo en blanco a la derecha de “Resultados/Validación”.\n- Escribimos el número de petición -> Enter.\n- Debe aparecer. Si no, hay que registrar la petición.\n\n2) Introducir la muestra en un rack gris con franjas rosas con el código de barras de frente.\n- Ponerlo en una de las 2 bandejas de entrada.\n- Iniciar -> inicio.\n- Comprobar que no de alarma de lectura de código de barras.\n- Comprobar que procesa nuestro número de petición y registra las pruebas.",
+      "buttons": []
+    },
+
+    "help_reset_labflow_analizador": {
+      "title": "AYUDA — Resetear conexión LABFLOW–ANALIZADOR",
+      "body": "Entrar en Labflow:\n- Escritorio -> Aplicaciones de equipo -> INFINITY o LABFLOW -> Introducir usuario y contraseña.\n\nPasos:\n- Monitorización -> ICA -> Monitorización ICA.\n- Desactivar -> buscar y hacer clic sobre el analizador Roche – cobas pro c503.\n- Desactivar -> el check verde de la columna Habilitado pasa a un aspa roja.\n- Habilitar -> el aspa roja vuelve a check verde.\n\nNo funciona si:\n- Se queda el aspa roja o un reloj de arena naranja en la columna “Habilitado”.",
+      "buttons": []
+    },
+
+    "help_llamar_roche": {
+      "title": "AYUDA — Llamar ROCHE",
+      "body": "1) Opción web (Navify) para registrar incidencia:\n- https://navifyportal.roche.com/es/es-es/apps\n- Iniciar sesión (⚠️ credenciales: mejor en documento interno)\n- Entrar en Online Support -> Nueva incidencia\n- Análisis Clínicos\n- Elegir el equipo implicado y el módulo\n- Seguir los pasos para registrar la incidencia\n- Indicar el teléfono al que queremos que nos llamen\n- Finalizar -> SOLICITAR ASISTENCIA\n\n2) Opción teléfono:\n- 900 300 705\n\nNotas:\n- Normalmente nos llaman cuando estudian el caso (aprox. 15–30 min).\n- En horario laboral suele haber técnico.\n- Fuera de horario responden para registrar o incidencias básicas.\n\nProbablemente haya que reiniciar Labflow desde Roche.",
+      "buttons": []
+    },
+
+    "help_transmite_gestlab": {
+      "title": "AYUDA — Cobas Pro transmite a Gestlab",
+      "body": "1) Se supone que la petición está registrada.\n\n2) Comprobar en el analizador que la muestra tenga resultados:\n- Rutina -> Resultados\n- Buscar el número de petición en la pantalla de la izquierda\n- Comprobar que haya resultados en la parte derecha.\n\n3) Dejar pasar al menos 3 minutos y comprobar que los resultados estén en Gestlab:\n- En Gestlab ir al campo en blanco a la derecha de “Resultados/Validación”\n- Poner el número de petición y Enter.\n- Aparece la pantalla de resultados.\n\n4) Comprobar si están los mismos que en el analizador.",
+      "buttons": []
+    },
+
+    "help_transmite_labflow": {
+      "title": "AYUDA — El analizador transmite a Labflow",
+      "body": "1) Se supone que la petición tiene resultados en Gestlab.\n\n2) Ir a Labflow:\n- Resumen -> Búsqueda de peticiones\n- Introducir el número de petición con un cero delante -> Enter.\n\n3) Deben aparecer las pruebas.\n\n4) Elegir el tubo “SUERO BIOQUÍMICA AMARILLO”.\n\n5) Comprobar si hay o no resultados.",
+      "buttons": []
+    },
+
+    "help_reset_gestlab_labflow": {
+      "title": "AYUDA — Resetear conexión GESTLAB–LABFLOW",
+      "body": "Entrar en Gestlab:\n- Procesos -> Conexión con analizadores\n- Buscar LABFLOW en la lista de la izquierda y hacer clic sobre él\n- Desactivar conexión\n- Ver comunicación -> última línea: “Conector No Activo” y arriba pone “Inicio”\n- Esperar 10 segundos\n- Activar conexión\n- Tras ~30 segundos arriba debe cambiar de “Inicio” a “Conectado” y actualizarse la lista\n\nPara verificar:\n- Reenviar resultados desde el analizador:\n  Rutina -> Resultados -> buscar nº petición -> seleccionar -> Bola -> Enviar a Host.\n- Esperar a
