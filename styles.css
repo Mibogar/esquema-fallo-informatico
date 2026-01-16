@@ -19,10 +19,13 @@
   --secondary: rgba(148,163,184,.16);
   --secondaryBorder: rgba(148,163,184,.26);
 
+  --helpBg: rgba(148,163,184,.10);
+  --helpBorder: rgba(148,163,184,.22);
+
   --focus: rgba(56,189,248,.55);
 }
 
-/* Base */
+/* Reset base */
 *{ box-sizing:border-box; }
 
 html, body{
@@ -48,7 +51,7 @@ body{
   padding: 18px;
 }
 
-/* Card */
+/* Card principal */
 .card{
   width: min(900px, 100%);
   background: var(--card);
@@ -58,42 +61,63 @@ body{
   padding: 18px;
 }
 
-/* Top bar */
+/* Barra superior */
 .topbar{
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 
 .topbar .btn.ghost{
   width: auto;
-  padding: 10px 12px;
+  padding: 8px 12px;
   font-size: 14px;
   font-weight: 750;
   border-radius: 14px;
 }
 
-/* Title + body */
+/* Título */
 .title{
-  font-size: clamp(24px, 3.8vw, 44px);
-  line-height: 1.08;
-  margin: 10px 0 10px 0;
+  font-size: clamp(24px, 3.6vw, 44px);
+  line-height: 1.1;
+  margin: 10px 0 8px 0;
   letter-spacing: .2px;
 }
 
+/* Texto principal */
 .body{
-  margin: 0 0 14px 0;
+  margin: 0 0 6px 0;
   color: var(--muted);
   font-size: 16px;
   line-height: 1.5;
 
-  /* CLAVE: respeta los saltos de línea del flow.json */
+  /* CLAVE: respeta saltos de línea del flow.json */
   white-space: pre-wrap;
 }
 
-/* Buttons layout */
+/* Fila del botón Ayuda */
+.helpRow{
+  display:flex;
+  justify-content:flex-start;   /* izquierda */
+  margin: 6px 0 10px 0;
+}
+
+/* Botón Ayuda (discreto) */
+.btn.help{
+  width: auto;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 14px;
+
+  background: var(--helpBg);
+  border: 1px solid var(--helpBorder);
+  color: var(--text);
+}
+
+/* Contenedor de botones principales */
 .buttons{
   display:grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -102,11 +126,16 @@ body{
 }
 
 @media (max-width: 560px){
-  .card{ padding: 14px; border-radius: 18px; }
-  .buttons{ grid-template-columns: 1fr; }
+  .card{
+    padding: 14px;
+    border-radius: 18px;
+  }
+  .buttons{
+    grid-template-columns: 1fr;
+  }
 }
 
-/* Buttons */
+/* Botones base */
 .btn{
   appearance: none;
   border: 1px solid var(--border);
@@ -121,28 +150,30 @@ body{
   background: rgba(255,255,255,.08);
   color: var(--text);
 
-  transition: transform .04s ease, filter .12s ease, background .12s ease, border-color .12s ease;
+  transition: transform .04s ease, filter .12s ease,
+              background .12s ease, border-color .12s ease;
   text-align: center;
-}
-
-.btn:active{
-  transform: translateY(1px);
 }
 
 .btn:hover{
   filter: brightness(1.08);
 }
 
-/* Focus visible (teclado/acc) */
+.btn:active{
+  transform: translateY(1px);
+}
+
+/* Accesibilidad foco */
 .btn:focus{
   outline: none;
 }
+
 .btn:focus-visible{
   outline: 3px solid var(--focus);
   outline-offset: 2px;
 }
 
-/* Variants */
+/* Variantes */
 .btn.primary{
   background: var(--primary);
   border-color: var(--primaryBorder);
@@ -169,7 +200,7 @@ body{
   border-color: var(--border);
 }
 
-/* Disabled */
+/* Deshabilitado */
 .btn[disabled],
 .btn[aria-disabled="true"]{
   opacity: .55;
@@ -177,13 +208,7 @@ body{
   transform: none;
 }
 
-/* Optional: make “Ayuda” button less dominant if you keep it as secondary */
-#helpBtn.btn.secondary{
-  width: 100%;
-  margin-top: 6px;
-}
-
-/* Optional: nicer error screen if app.js prints <pre> */
+/* Estilo para errores (pre) */
 pre{
   white-space: pre-wrap;
   word-break: break-word;
