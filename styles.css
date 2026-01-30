@@ -25,7 +25,7 @@
   --focus: rgba(56,189,248,.55);
 }
 
-/* Reset base */
+/* Reset */
 *{ box-sizing:border-box; }
 
 html, body{
@@ -51,7 +51,7 @@ body{
   padding: 18px;
 }
 
-/* Card principal */
+/* Card */
 .card{
   width: min(900px, 100%);
   background: var(--card);
@@ -61,7 +61,7 @@ body{
   padding: 18px;
 }
 
-/* Barra superior */
+/* Top bar */
 .topbar{
   display:flex;
   align-items:center;
@@ -71,53 +71,47 @@ body{
 }
 
 .topbar .btn.ghost{
-  width: auto;
   padding: 8px 12px;
   font-size: 14px;
   font-weight: 750;
   border-radius: 14px;
 }
 
-/* Título */
+/* Title */
 .title{
   font-size: clamp(24px, 3.6vw, 44px);
   line-height: 1.1;
   margin: 10px 0 8px 0;
-  letter-spacing: .2px;
 }
 
-/* Texto principal */
+/* Texto normal */
 .body{
   margin: 0 0 6px 0;
   color: var(--muted);
   font-size: 16px;
   line-height: 1.5;
-
-  /* CLAVE: respeta saltos de línea del flow.json */
   white-space: pre-wrap;
 }
 
-/* Fila del botón Ayuda */
+/* Botón ayuda */
 .helpRow{
   display:flex;
-  justify-content:flex-start;   /* izquierda */
+  justify-content:flex-start;
   margin: 6px 0 10px 0;
 }
 
-/* Botón Ayuda (discreto) */
 .btn.help{
   width: auto;
   padding: 8px 12px;
   font-size: 14px;
   font-weight: 700;
   border-radius: 14px;
-
   background: var(--helpBg);
   border: 1px solid var(--helpBorder);
   color: var(--text);
 }
 
-/* Contenedor de botones principales */
+/* Botones principales */
 .buttons{
   display:grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -140,76 +134,59 @@ body{
   appearance: none;
   border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 16px 16px;
+  padding: 16px;
   cursor: pointer;
-
   font-size: 18px;
   font-weight: 850;
-  letter-spacing: .2px;
-
   background: rgba(255,255,255,.08);
   color: var(--text);
-
-  transition: transform .04s ease, filter .12s ease,
-              background .12s ease, border-color .12s ease;
-  text-align: center;
+  transition: transform .04s ease, filter .12s ease, background .12s ease;
 }
 
-.btn:hover{
-  filter: brightness(1.08);
-}
-
-.btn:active{
-  transform: translateY(1px);
-}
-
-/* Accesibilidad foco */
-.btn:focus{
-  outline: none;
-}
-
-.btn:focus-visible{
-  outline: 3px solid var(--focus);
-  outline-offset: 2px;
-}
+.btn:hover{ filter: brightness(1.08); }
+.btn:active{ transform: translateY(1px); }
 
 /* Variantes */
 .btn.primary{
   background: var(--primary);
   border-color: var(--primaryBorder);
 }
-
 .btn.yes{
   background: var(--yes);
   border-color: var(--yesBorder);
   color: #07150c;
 }
-
 .btn.no{
   background: var(--no);
   border-color: var(--noBorder);
 }
-
 .btn.secondary{
   background: var(--secondary);
   border-color: var(--secondaryBorder);
 }
-
 .btn.ghost{
   background: transparent;
   border-color: var(--border);
 }
 
 /* Deshabilitado */
-.btn[disabled],
-.btn[aria-disabled="true"]{
-  opacity: .55;
-  cursor: not-allowed;
-  transform: none;
+.btn[disabled]{
+  opacity:.55;
+  cursor:not-allowed;
 }
 
-/* Estilo para errores (pre) */
-pre{
+/* === VISOR DE PROCEDIMIENTOS (Markdown) === */
+.helpText{
+  margin-top: 8px;
+  padding: 14px;
+  border-radius: 14px;
+  background: rgba(0,0,0,.35);
+  border: 1px solid var(--border);
+
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 14.5px;
+  line-height: 1.5;
+
   white-space: pre-wrap;
   word-break: break-word;
 }
