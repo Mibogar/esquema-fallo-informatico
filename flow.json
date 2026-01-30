@@ -11,7 +11,7 @@
 
     "gestlab": {
       "title": "¿FUNCIONA GESTLAB?",
-      "body": "Comprueba si puedes entrar y operar con normalidad.",
+      "body": "Comprueba si puedes entrar al programa y operar con normalidad. Pulsa en Ayuda para información más detallada.",
       "helpSrc": "procedimientos/gestlab.md",
       "buttons": [
         { "label": "SÍ", "style": "yes", "next": "labflow" },
