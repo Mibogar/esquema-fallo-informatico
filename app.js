@@ -68,18 +68,42 @@ function renderNode(node) {
   const title = document.createElement("h1");
   title.textContent = node.title;
 
-  /* Texto principal */
+  /* Texto principal (si está vacío, no ocupa espacio) */
+  const bodyText = (node.body || "").trim();
   const body = document.createElement("p");
-  body.textContent = node.body || "";
+  body.textContent = bodyText;
+  if (!bodyText) body.style.display = "none";
 
-  /* Botón ayuda */
-  let helpBtn = null;
+  /* Fila de acciones secundarias (Ayuda + PDF) */
+  const actionsRow = document.createElement("div");
+  actionsRow.className = "helpRow";
+
+  let hasActions = false;
+
+  /* Botón Ayuda */
   if (node.helpSrc) {
-    helpBtn = document.createElement("button");
+    const helpBtn = document.createElement("button");
     helpBtn.className = "btn help";
     helpBtn.textContent = "Ayuda";
     helpBtn.onclick = () => openHelp(node);
+    actionsRow.appendChild(helpBtn);
+    hasActions = true;
   }
+
+  /* Botón PDF (abre en pestaña nueva) */
+  if (node.pdfUrl && node.pdfLabel) {
+    const pdfBtn = document.createElement("button");
+    pdfBtn.className = "btn primary";
+    pdfBtn.textContent = node.pdfLabel;
+    pdfBtn.onclick = () => {
+      // Abrir siempre en pestaña nueva
+      window.open(node.pdfUrl, "_blank", "noopener,noreferrer");
+    };
+    actionsRow.appendChild(pdfBtn);
+    hasActions = true;
+  }
+
+  if (!hasActions) actionsRow.style.display = "none";
 
   /* Botones de decisión */
   const buttons = document.createElement("div");
@@ -93,12 +117,12 @@ function renderNode(node) {
       btn.onclick = () => goTo(b.next);
       buttons.appendChild(btn);
     });
+  } else {
+    // si no hay botones, no mostramos el bloque
+    buttons.style.display = "none";
   }
 
-  card.append(topBar, title, body);
-  if (helpBtn) card.appendChild(helpBtn);
-  card.appendChild(buttons);
-
+  card.append(topBar, title, body, actionsRow, buttons);
   app.appendChild(card);
 }
 
@@ -133,13 +157,12 @@ function openHelp(node) {
 
   /* Contenedor Markdown */
   const content = document.createElement("div");
-  content.className = "help-content";
+  content.className = "helpMarkdown";
   content.innerHTML = "Cargando ayuda…";
 
   card.append(topBar, title, content);
   app.appendChild(card);
 
-  /* 🔴 AQUÍ está la clave */
   fetch(node.helpSrc)
     .then(res => res.text())
     .then(md => {
