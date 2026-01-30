@@ -11,6 +11,7 @@ Se refiere a si se puede entrar al programa.
 ## Para saberlo
 **Escritorio → Aplicaciones de equipo → INFINITY (o LABFLOW) →**
 Introducir usuario y contraseña.
+
 Usuario: **URB**
 Contraseña: **Usuario1**
 
