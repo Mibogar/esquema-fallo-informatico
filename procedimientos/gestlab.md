@@ -1,5 +1,3 @@
-# ¿FUNCIONA GESTLAB?
-
 Se refiere a si se puede entrar al programa.
 
 ## Para saberlo
