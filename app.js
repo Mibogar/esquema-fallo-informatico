@@ -2,6 +2,9 @@ let flow = null;
 let history = [];
 let currentNodeId = null;
 
+// Para volver desde AYUDA al nodo exacto que la abrió
+let helpReturnNodeId = null;
+
 const app = document.getElementById("app");
 
 /* ===============================
@@ -21,7 +24,7 @@ fetch("flow.json")
    Navegación
 ================================ */
 function goTo(nodeId, pushHistory = true) {
-  if (pushHistory && currentNodeId) {
+  if (pushHistory && currentNodeId && currentNodeId !== "__HELP__") {
     history.push(currentNodeId);
   }
   currentNodeId = nodeId;
@@ -31,11 +34,12 @@ function goTo(nodeId, pushHistory = true) {
 function goBack() {
   if (history.length === 0) return;
   currentNodeId = history.pop();
-  renderNode(flow.nodes[currentNodeId], false);
+  renderNode(flow.nodes[currentNodeId]);
 }
 
 function restart() {
   history = [];
+  helpReturnNodeId = null;
   goTo(flow.start, false);
 }
 
@@ -68,7 +72,7 @@ function renderNode(node) {
   const title = document.createElement("h1");
   title.textContent = node.title;
 
-  /* Texto principal (si está vacío, no ocupa espacio) */
+  /* Texto principal */
   const bodyText = (node.body || "").trim();
   const body = document.createElement("p");
   body.textContent = bodyText;
@@ -90,13 +94,12 @@ function renderNode(node) {
     hasActions = true;
   }
 
-  /* Botón PDF (abre en pestaña nueva) */
+  /* Botón PDF */
   if (node.pdfUrl && node.pdfLabel) {
     const pdfBtn = document.createElement("button");
     pdfBtn.className = "btn primary";
     pdfBtn.textContent = node.pdfLabel;
     pdfBtn.onclick = () => {
-      // Abrir siempre en pestaña nueva
       window.open(node.pdfUrl, "_blank", "noopener,noreferrer");
     };
     actionsRow.appendChild(pdfBtn);
@@ -118,7 +121,6 @@ function renderNode(node) {
       buttons.appendChild(btn);
     });
   } else {
-    // si no hay botones, no mostramos el bloque
     buttons.style.display = "none";
   }
 
@@ -128,8 +130,13 @@ function renderNode(node) {
 
 /* ===============================
    Pantalla de ayuda (Markdown)
+   ✅ Volver vuelve al nodo que abrió la ayuda
 ================================ */
 function openHelp(node) {
+  // Guardamos el nodo actual (desde el que se abrió ayuda)
+  helpReturnNodeId = currentNodeId;
+  currentNodeId = "__HELP__";
+
   app.innerHTML = "";
 
   const card = document.createElement("div");
@@ -142,7 +149,14 @@ function openHelp(node) {
   const backBtn = document.createElement("button");
   backBtn.className = "btn secondary";
   backBtn.textContent = "◀ Volver";
-  backBtn.onclick = goBack;
+  backBtn.onclick = () => {
+    // 🔥 Aquí está el cambio: volver al nodo que abrió la ayuda
+    if (helpReturnNodeId && flow.nodes[helpReturnNodeId]) {
+      const returnId = helpReturnNodeId;
+      helpReturnNodeId = null;
+      goTo(returnId, false); // sin tocar historial
+    }
+  };
 
   const restartBtn = document.createElement("button");
   restartBtn.className = "btn secondary";
