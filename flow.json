@@ -21,7 +21,7 @@
 
     "labflow": {
       "title": "¿FUNCIONA LABFLOW?",
-      "body": "Comprueba si puedes entrar al programa y operar con normalidad.",
+      "body": "Comprueba si puedes entrar al programa y operar con normalidad. Pulsa en Ayuda para información más detallada",
       "helpSrc": "procedimientos/labflow.md",
       "buttons": [
         { "label": "SÍ", "style": "yes", "next": "cobas_racks" },
