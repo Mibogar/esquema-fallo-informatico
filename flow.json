@@ -112,13 +112,13 @@
   "pdfUrl": "docs/protocolo_caida_informatica_1.pdf"
 },
 
-    "informatica_2": {
-      "title": "Llamar INFORMÁTICA del HOSPITAL (2)",
-      "body": "Posible reinicio de servidor de Labflow.\nSigue las instrucciones del servicio.",
-      "buttons": [
-        { "label": "REINICIAR", "style": "secondary", "next": "inicio" }
-      ]
-    },
+"informatica_2": {
+  "title": "Llamar INFORMÁTICA del HOSPITAL (2)",
+  "body": "",
+  "helpSrc": "procedimientos/informatica_2.md",
+  "pdfLabel": "Iniciar protocolo caída informática (2)",
+  "pdfUrl": "docs/protocolo_caida_informatica_1.pdf"
+},
 
     "help_gestlab": {
       "title": "AYUDA — ¿FUNCIONA GESTLAB?",
