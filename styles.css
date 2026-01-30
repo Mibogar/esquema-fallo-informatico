@@ -190,3 +190,48 @@ body{
   white-space: pre-wrap;
   word-break: break-word;
 }
+/* ===== Estilos para Markdown en procedimientos ===== */
+
+.helpMarkdown h1 {
+  font-size: 28px;
+  margin: 16px 0 10px;
+  border-bottom: 1px solid rgba(255,255,255,.2);
+  padding-bottom: 6px;
+}
+
+.helpMarkdown h2 {
+  font-size: 22px;
+  margin: 18px 0 8px;
+}
+
+.helpMarkdown h3 {
+  font-size: 18px;
+  margin: 14px 0 6px;
+}
+
+.helpMarkdown p {
+  margin: 8px 0;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.helpMarkdown strong {
+  font-weight: 800;
+}
+
+.helpMarkdown ul,
+.helpMarkdown ol {
+  margin: 8px 0 8px 22px;
+}
+
+.helpMarkdown li {
+  margin: 6px 0;
+}
+
+.helpMarkdown {
+  margin-top: 10px;
+  padding: 14px;
+  background: rgba(0,0,0,.35);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
