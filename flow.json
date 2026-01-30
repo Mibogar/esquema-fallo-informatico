@@ -104,13 +104,13 @@
       ]
     },
 
-    "informatica_1": {
-      "title": "Llamar INFORMÁTICA del HOSPITAL (1)",
-      "body": "Incidencia informática general.\nSigue las instrucciones del servicio.",
-      "buttons": [
-        { "label": "REINICIAR", "style": "secondary", "next": "inicio" }
-      ]
-    },
+"informatica_1": {
+  "title": "Llamar INFORMÁTICA del HOSPITAL (1)",
+  "body": "",
+  "helpSrc": "procedimientos/informatica_1.md",
+  "pdfLabel": "Iniciar protocolo caída informática (1)",
+  "pdfUrl": "docs/protocolo_caida_informatica_1.pdf"
+},
 
     "informatica_2": {
       "title": "Llamar INFORMÁTICA del HOSPITAL (2)",
