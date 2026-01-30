@@ -12,7 +12,99 @@ function escapeHtml(s) {
     .replaceAll("'", "&#039;");
 }
 
-/* --- Render de un nodo --- */
+/* --- Carga segura de texto (Markdown) --- */
+async function fetchText(path) {
+  const res = await fetch("./" + path, { cache: "no-store" });
+  if (!res.ok) throw new Error(`No se pudo cargar ${path} (HTTP ${res.status})`);
+  return await res.text();
+}
+
+/* --- Render de un "visor de ayuda" (Markdown como texto tal cual) --- */
+async function renderHelpFromSrc(node, srcPath) {
+  const app = document.getElementById("app");
+
+  // Guardamos el nodo actual para que VOLVER funcione
+  if (currentId) historyStack.push(currentId);
+  currentId = "__HELP__";
+
+  app.innerHTML = `
+    <div class="card">
+      <div class="topbar">
+        <button class="btn ghost" id="backBtn">◀ Volver</button>
+        <button class="btn ghost" id="resetBtn">⟲ Reiniciar</button>
+      </div>
+
+      <h1 class="title">AYUDA — ${escapeHtml(node.title)}</h1>
+      <p class="body">Cargando procedimiento...</p>
+    </div>
+  `;
+
+  document.getElementById("backBtn").onclick = () => {
+    const prev = historyStack.pop();
+    if (prev) render(prev, false);
+  };
+
+  document.getElementById("resetBtn").onclick = () => {
+    historyStack.length = 0;
+    render(FLOW.start, false);
+  };
+
+  try {
+    const text = await fetchText(srcPath);
+
+    // Mostramos el markdown "tal cual" (sin interpretar). Fácil, robusto, cero dependencias.
+    // Si más adelante quieres que se vea “bonito” (títulos/viñetas renderizadas),
+    // lo hacemos con un parser Markdown, pero esto ya te funciona perfecto hoy.
+    app.innerHTML = `
+      <div class="card">
+        <div class="topbar">
+          <button class="btn ghost" id="backBtn">◀ Volver</button>
+          <button class="btn ghost" id="resetBtn">⟲ Reiniciar</button>
+        </div>
+
+        <h1 class="title">AYUDA — ${escapeHtml(node.title)}</h1>
+
+        <pre class="helpText">${escapeHtml(text)}</pre>
+      </div>
+    `;
+
+    document.getElementById("backBtn").onclick = () => {
+      const prev = historyStack.pop();
+      if (prev) render(prev, false);
+    };
+
+    document.getElementById("resetBtn").onclick = () => {
+      historyStack.length = 0;
+      render(FLOW.start, false);
+    };
+  } catch (err) {
+    app.innerHTML = `
+      <div class="card">
+        <div class="topbar">
+          <button class="btn ghost" id="backBtn">◀ Volver</button>
+          <button class="btn ghost" id="resetBtn">⟲ Reiniciar</button>
+        </div>
+
+        <h1 class="title">AYUDA — ${escapeHtml(node.title)}</h1>
+
+        <pre class="helpText" style="color:#ffb4b4">${escapeHtml(err.message)}</pre>
+        <p class="body">Revisa que el archivo exista y que la ruta en <b>helpSrc</b> sea correcta.</p>
+      </div>
+    `;
+
+    document.getElementById("backBtn").onclick = () => {
+      const prev = historyStack.pop();
+      if (prev) render(prev, false);
+    };
+
+    document.getElementById("resetBtn").onclick = () => {
+      historyStack.length = 0;
+      render(FLOW.start, false);
+    };
+  }
+}
+
+/* --- Render de un nodo normal --- */
 function render(nodeId, pushHistory = true) {
   const app = document.getElementById("app");
   const node = FLOW?.nodes?.[nodeId];
@@ -33,6 +125,7 @@ function render(nodeId, pushHistory = true) {
         </div>
       </div>
     `;
+
     document.getElementById("resetBtn").onclick = () => {
       historyStack.length = 0;
       render(FLOW.start, false);
@@ -44,15 +137,15 @@ function render(nodeId, pushHistory = true) {
     return;
   }
 
-  if (pushHistory && currentId) historyStack.push(currentId);
+  if (pushHistory && currentId && currentId !== "__HELP__") historyStack.push(currentId);
   currentId = nodeId;
 
-  /* --- Botón AYUDA (pequeño, a la izquierda, debajo del texto) --- */
-  const helpBtnHtml = node.help
+  // AYUDA si existe helpSrc o help (compatibilidad)
+  const hasHelp = !!node.helpSrc || !!node.help;
+  const helpBtnHtml = hasHelp
     ? `<div class="helpRow"><button class="btn help" id="helpBtn">Ayuda</button></div>`
     : "";
 
-  /* --- Botones principales del nodo --- */
   const buttonsHtml = (node.buttons || [])
     .map(
       (b) => `
@@ -74,7 +167,6 @@ function render(nodeId, pushHistory = true) {
       </div>
 
       <h1 class="title">${escapeHtml(node.title)}</h1>
-
       <p class="body">${escapeHtml(node.body || "")}</p>
 
       ${helpBtnHtml}
@@ -85,7 +177,6 @@ function render(nodeId, pushHistory = true) {
     </div>
   `;
 
-  /* --- Eventos navegación global --- */
   document.getElementById("backBtn").onclick = () => {
     const prev = historyStack.pop();
     if (prev) render(prev, false);
@@ -96,12 +187,22 @@ function render(nodeId, pushHistory = true) {
     render(FLOW.start, false);
   };
 
-  /* --- Evento botón AYUDA --- */
-  if (node.help) {
-    document.getElementById("helpBtn").onclick = () => render(node.help);
+  // Click AYUDA
+  if (hasHelp) {
+    document.getElementById("helpBtn").onclick = async () => {
+      // Nuevo sistema: helpSrc (archivo externo)
+      if (node.helpSrc) {
+        await renderHelpFromSrc(node, node.helpSrc);
+        return;
+      }
+      // Sistema antiguo: help (nodo interno)
+      if (node.help) {
+        render(node.help);
+      }
+    };
   }
 
-  /* --- Eventos botones de decisión --- */
+  // Botones de decisión
   app.querySelectorAll("button[data-next]").forEach((btn) => {
     btn.onclick = () => render(btn.getAttribute("data-next"));
   });
@@ -133,7 +234,7 @@ init().catch((err) => {
   `;
 });
 
-/* --- PWA: registrar Service Worker (lo añadiremos en el siguiente paso) --- */
+/* --- PWA: registrar Service Worker (lo haremos después) --- */
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     navigator.serviceWorker.register("./sw.js").catch(() => {});
