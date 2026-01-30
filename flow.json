@@ -12,7 +12,7 @@
     "gestlab": {
       "title": "¿FUNCIONA GESTLAB?",
       "body": "Comprueba si puedes entrar y operar con normalidad.",
-      "help": "help_gestlab",
+      "helpSrc": "procedimientos/gestlab.md",
       "buttons": [
         { "label": "SÍ", "style": "yes", "next": "labflow" },
         { "label": "NO", "style": "no", "next": "informatica_1" }
