@@ -41,8 +41,8 @@
 
     "reset_labflow_analizador": {
       "title": "Resetear conexión LABFLOW–ANALIZADOR",
-      "body": "Realiza el procedimiento de reseteo de la conexión.\nDespués indica si la conexión funciona.",
-      "help": "help_reset_labflow_analizador",
+      "body": "Realiza el procedimiento de reseteo de la conexión. Después indica si la conexión funciona o no",
+      "helpSrc": "procedimientos/reset_labflow_analizador.md",
       "buttons": [
         { "label": "FUNCIONA", "style": "yes", "next": "transmite_gestlab" },
         { "label": "NO FUNCIONA", "style": "no", "next": "llamar_roche" }
