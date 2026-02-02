@@ -31,7 +31,7 @@
 
     "cobas_racks": {
       "title": "En Cobas Pro: ¿reconoce y analiza racks?",
-      "body": "Comprueba si reconoce racks y analiza correctamente.",
+      "body": "Comprueba si reconoce racks y analiza las muestras correctamente.",
       "helpSrc": "procedimientos/cobas_racks.md",
       "buttons": [
         { "label": "SÍ", "style": "yes", "next": "transmite_gestlab" },
