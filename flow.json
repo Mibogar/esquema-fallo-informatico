@@ -41,11 +41,11 @@
 
     "reset_labflow_analizador": {
       "title": "Resetear Conexión LABFLOW-ANALIZADOR",
-      "body": "",
+      "body": "Sigue el procedimiento indicado.",
       "helpSrc": "procedimientos/reset_labflow_analizador.md",
       "buttons": [
-        { "label": "FUNCIONA", "style": "yes", "next": "todo_ok" },
-        { "label": "NO FUNCIONA", "style": "no", "next": "roche" }
+        { "label": "FUNCIONA", "style": "yes", "next": "..." },
+        { "label": "NO FUNCIONA", "style": "no", "next": "..." }
       ]
     },
 
