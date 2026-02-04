@@ -28,6 +28,7 @@ Entrar en Online Support
 Nos llamarán cuando estudien el caso. Suelen tardar unos 15 – 20 minutos.
  
 
+
 **2)** La otra opción es hacer lo mismo, pero **llamando por teléfono.** 
 
 ## 900 300 705
