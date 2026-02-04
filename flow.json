@@ -60,7 +60,7 @@
     "transmite_gestlab": {
       "title": "¿Cobas Pro transmite resultados a Gestlab?",
       "body": "Comprueba si los resultados del analizador llegan a Gestlab.",
-      "help": "help_transmite_gestlab",
+      "helpSrc": "procedimientos/transmite_gestlab.md",
       "buttons": [
         { "label": "SÍ", "style": "yes", "next": "todo_ok" },
         { "label": "NO", "style": "no", "next": "transmite_labflow" }
