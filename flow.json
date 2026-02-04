@@ -49,14 +49,13 @@
       ]
     },
 
-    "llamar_roche": {
-      "title": "Llamar a ROCHE",
-      "body": "Contacta con el servicio técnico de Roche para comunicar la incidencia.",
-      "help": "help_llamar_roche",
-      "buttons": [
-        { "label": "CONTINUAR", "style": "primary", "next": "transmite_gestlab" }
-      ]
-    },
+"roche": {
+  "title": "Llamar a ROCHE",
+  "body": "",
+  "helpSrc": "procedimientos/roche_3.md",
+  "pdfLabel": "Iniciar protocolo caída informática (3)",
+  "pdfUrl": "docs/protocolo_caida_informatica_1.pdf"
+},
 
     "transmite_gestlab": {
       "title": "¿Cobas Pro transmite resultados a Gestlab?",
