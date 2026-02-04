@@ -45,7 +45,7 @@
       "helpSrc": "procedimientos/reset_labflow_analizador.md",
       "buttons": [
         { "label": "FUNCIONA", "style": "yes", "next": "transmite_gestlab" },
-        { "label": "NO FUNCIONA", "style": "no", "next": "llamar_roche" }
+        { "label": "NO FUNCIONA", "style": "no", "next": "roche" }
       ]
     },
 
