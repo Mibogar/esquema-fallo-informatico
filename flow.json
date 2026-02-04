@@ -40,14 +40,14 @@
     },
 
     "reset_labflow_analizador": {
-  "title": "Resetear Conexión LABFLOW-ANALIZADOR",
-  "body": "",
-  "helpSrc": "procedimientos/reset_labflow_analizador.md",
-  "buttons": [
-    { "label": "FUNCIONA", "style": "yes", "next": "todo_ok" },
-    { "label": "NO FUNCIONA", "style": "no", "next": "roche" }
-  ]
-},
+      "title": "Resetear Conexión LABFLOW-ANALIZADOR",
+      "body": "",
+      "helpSrc": "procedimientos/reset_labflow_analizador.md",
+      "buttons": [
+        { "label": "FUNCIONA", "style": "yes", "next": "todo_ok" },
+        { "label": "NO FUNCIONA", "style": "no", "next": "roche" }
+      ]
+    },
 
     "roche": {
       "title": "Llamar a ROCHE",
@@ -78,11 +78,12 @@
     },
 
     "reset_gestlab_labflow": {
-      "title": "Resetear conexión GESTLAB–LABFLOW",
-      "body": "Realiza el procedimiento de reseteo de la conexión entre Gestlab y Labflow.",
-      "help": "help_reset_gestlab_labflow",
+      "title": "Resetear conexión GESTLAB-LABFLOW",
+      "body": "",
+      "helpSrc": "procedimientos/reset_gestlab_labflow.md",
       "buttons": [
-        { "label": "CONTINUAR", "style": "primary", "next": "todo_ok" }
+        { "label": "FUNCIONA", "style": "yes", "next": "todo_ok" },
+        { "label": "NO FUNCIONA", "style": "no", "next": "gestlab_4" }
       ]
     },
 
