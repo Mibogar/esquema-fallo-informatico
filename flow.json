@@ -73,7 +73,7 @@
       "helpSrc": "procedimientos/transmite_labflow.md",
       "buttons": [
         { "label": "SÍ", "style": "yes", "next": "reset_gestlab_labflow" },
-        { "label": "NO", "style": "no", "next": "llamar_gestlab" }
+        { "label": "NO", "style": "no", "next": "reset_labflow_analizador" }
       ]
     },
 
