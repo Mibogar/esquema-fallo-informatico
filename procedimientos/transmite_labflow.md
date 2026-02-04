@@ -2,7 +2,7 @@
 
 2. Ir a Lablow
 
-**Resumen -> Búsqueda de peticiones -> introducir el número de petición con un cero delante -> Enter.**
+  **Resumen -> Búsqueda de peticiones -> introducir el número de petición con un cero delante -> Enter.**
 
 4. Deben aparecer las pruebas.
 
