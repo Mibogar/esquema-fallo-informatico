@@ -70,7 +70,7 @@
     "transmite_labflow": {
       "title": "¿El analizador transmite resultados a Labflow?",
       "body": "Comprueba si Labflow recibe resultados del analizador.",
-      "help": "help_transmite_labflow",
+      "helpSrc": "procedimientos/transmite_labflow.md",
       "buttons": [
         { "label": "SÍ", "style": "yes", "next": "reset_gestlab_labflow" },
         { "label": "NO", "style": "no", "next": "llamar_gestlab" }
