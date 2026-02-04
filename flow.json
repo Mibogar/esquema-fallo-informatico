@@ -40,14 +40,14 @@
     },
 
     "reset_labflow_analizador": {
-      "title": "Resetear conexión LABFLOW–ANALIZADOR",
-      "body": "Realiza el procedimiento de reseteo de la conexión. Después indica si la conexión funciona o no",
-      "helpSrc": "procedimientos/reset_labflow_analizador.md",
-      "buttons": [
-        { "label": "FUNCIONA", "style": "yes", "next": "transmite_gestlab" },
-        { "label": "NO FUNCIONA", "style": "no", "next": "roche" }
-      ]
-    },
+  "title": "Resetear Conexión LABFLOW-ANALIZADOR",
+  "body": "",
+  "helpSrc": "procedimientos/reset_labflow_analizador.md",
+  "buttons": [
+    { "label": "FUNCIONA", "style": "yes", "next": "todo_ok" },
+    { "label": "NO FUNCIONA", "style": "no", "next": "gestlab_4" }
+  ]
+},
 
     "roche": {
       "title": "Llamar a ROCHE",
