@@ -1,7 +1,7 @@
 Probablemente los de Roche tengan que reiniciar algo relacionado con Labflow.
 
 
-1) Lo más rápido es entrar a la web Navify para escribir el problema.
+**1)** Lo más rápido es **entrar a la web Navify** para escribir el problema.
 Para ello:
 **https://navifyportal.roche.com/es/es-es/apps**
 
@@ -27,7 +27,8 @@ Entrar en Online Support
 
 Nos llamarán cuando estudien el caso. Suelen tardar unos 15 – 20 minutos.
  
-2) La otra opción es hacer lo mismo, pero llamando por teléfono. 
+
+**2)** La otra opción es hacer lo mismo, pero **llamando por teléfono.** 
 
 ## 900 300 705
 
