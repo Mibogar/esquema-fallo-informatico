@@ -45,7 +45,7 @@
       "helpSrc": "procedimientos/reset_labflow_analizador.md",
       "buttons": [
         { "label": "FUNCIONA", "style": "yes", "next": "..." },
-        { "label": "NO FUNCIONA", "style": "no", "next": "..." }
+        { "label": "NO FUNCIONA", "style": "no", "Llamar a ROCHE" }
       ]
     },
 
