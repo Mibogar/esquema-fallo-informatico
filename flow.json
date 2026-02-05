@@ -21,7 +21,7 @@
 
     "informatica_1": {
       "title": "Llamar INFORMÁTICA del HOSPITAL (1)",
-      "body": "",
+      "body": "Incidencia informática general. Contacta con el servicio de Informática del Hospital.",
       "helpSrc": "procedimientos/informatica_1.md",
       "pdfLabel": "Iniciar protocolo caída informática (1)",
       "pdfUrl": "docs/protocolo_caida_informatica_1.pdf"
@@ -39,7 +39,7 @@
 
     "informatica_2": {
       "title": "Llamar INFORMÁTICA del HOSPITAL (2)",
-      "body": "",
+      "body": "Problema detectado en el funcionamiento de LABFLOW. Contacta con Informática del Hospital.",
       "helpSrc": "procedimientos/informatica_2.md",
       "pdfLabel": "Iniciar protocolo caída informática (2)",
       "pdfUrl": "docs/protocolo_caida_informatica_1.pdf"
@@ -67,7 +67,7 @@
 
     "transmite_labflow": {
       "title": "¿El analizador transmite resultados a Labflow?",
-      "body": "",
+      "body": "Comprueba si el analizador transmite resultados a LABFLOW.",
       "helpSrc": "procedimientos/transmite_labflow.md",
       "buttons": [
         { "label": "SÍ", "style": "yes", "next": "reset_gestlab_labflow" },
@@ -77,7 +77,7 @@
 
     "reset_labflow_analizador": {
       "title": "Resetear Conexión LABFLOW–ANALIZADOR",
-      "body": "",
+      "body": "Sigue el procedimiento indicado (Ayuda) para restablecer la comunicación entre LABFLOW y el analizador.",
       "helpSrc": "procedimientos/reset_labflow_analizador.md",
       "buttons": [
         { "label": "FUNCIONA", "style": "yes", "next": "transmite_gestlab" },
@@ -87,7 +87,7 @@
 
     "roche": {
       "title": "Llamar a ROCHE",
-      "body": "",
+      "body": "Si tras las comprobaciones el problema persiste, contacta con el servicio técnico de ROCHE.",
       "helpSrc": "procedimientos/roche_3.md",
       "pdfLabel": "Iniciar protocolo caída informática (3)",
       "pdfUrl": "docs/protocolo_caida_informatica_1.pdf"
@@ -95,7 +95,7 @@
 
     "reset_gestlab_labflow": {
       "title": "Resetear conexión GESTLAB–LABFLOW",
-      "body": "",
+      "body": "Sigue el procedimiento indicado (Ayuda) para restablecer la conexión entre GESTLAB y LABFLOW.",
       "helpSrc": "procedimientos/reset_gestlab_labflow.md",
       "buttons": [
         { "label": "FUNCIONA", "style": "yes", "next": "todo_ok" },
@@ -105,7 +105,7 @@
 
     "gestlab_4": {
       "title": "Llamar a GESTLAB (4)",
-      "body": "",
+      "body": "Si la conexión entre GESTLAB y LABFLOW no se restablece, contacta con GESTLAB.",
       "helpSrc": "procedimientos/gestlab_4.md",
       "pdfLabel": "Iniciar protocolo caída informática (4)",
       "pdfUrl": "docs/protocolo_caida_informatica_1.pdf"
