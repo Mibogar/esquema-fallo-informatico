@@ -57,7 +57,7 @@
 
     "transmite_gestlab": {
       "title": "¿Cobas Pro transmite resultados a Gestlab?",
-      "body": "",
+      "body": "Verifica si los resultados del Cobas Pro llegan correctamente a GESTLAB.",
       "helpSrc": "procedimientos/transmite_gestlab.md",
       "buttons": [
         { "label": "SÍ", "style": "yes", "next": "todo_ok" },
