@@ -29,7 +29,7 @@
 
     "labflow": {
       "title": "¿FUNCIONA LABFLOW?",
-      "body": "",
+      "body": "Comprueba si LABFLOW está accesible y responde correctamente.",
       "helpSrc": "procedimientos/labflow.md",
       "buttons": [
         { "label": "SÍ", "style": "yes", "next": "cobas_racks" },
