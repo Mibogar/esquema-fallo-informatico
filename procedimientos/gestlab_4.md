@@ -4,7 +4,7 @@ Probablemente haya que **reiniciar las comunicaciones “C” y “P”** desde 
 
 De lunes a viernes de 08:00 a 18:00
 
-Llamar al Técnico de Gestlab: 
+Llamar al **Técnico de Gestlab**: 
 
 Pepa 
 
@@ -17,7 +17,7 @@ De lunes a viernes de 18:00 a 08:00
 
 Sábados, domingos y festivos
 
-Llamar a SAT de Gestlab 
+Llamar a **SAT de Gestlab**: 
 
 ## 630 214 275
 
