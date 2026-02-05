@@ -3,7 +3,7 @@
   "nodes": {
     "inicio": {
       "title": "ESQUEMA DE ACTUACIÓN ANTE UN FALLO INFORMÁTICO",
-      "body": "Sigue el protocolo paso a paso.\nUsa VOLVER para retroceder un paso.\nUsa REINICIAR para empezar de nuevo.",
+      "body": "Pulsa EMPEZAR para seguir el protocolo paso a paso.\n\nUsa VOLVER para retroceder un paso y REINICIAR para empezar de nuevo.",
       "buttons": [
         { "label": "EMPEZAR", "style": "primary", "next": "gestlab" }
       ]
@@ -11,7 +11,7 @@
 
     "gestlab": {
       "title": "¿FUNCIONA GESTLAB?",
-      "body": "Comprueba si puedes entrar al programa y operar con normalidad. Pulsa en Ayuda para información más detallada.",
+      "body": "",
       "helpSrc": "procedimientos/gestlab.md",
       "buttons": [
         { "label": "SÍ", "style": "yes", "next": "labflow" },
@@ -19,9 +19,17 @@
       ]
     },
 
+    "informatica_1": {
+      "title": "Llamar INFORMÁTICA del HOSPITAL (1)",
+      "body": "",
+      "helpSrc": "procedimientos/informatica_1.md",
+      "pdfLabel": "Iniciar protocolo caída informática (1)",
+      "pdfUrl": "docs/protocolo_caida_informatica_1.pdf"
+    },
+
     "labflow": {
       "title": "¿FUNCIONA LABFLOW?",
-      "body": "Comprueba si puedes entrar al programa y operar con normalidad. Pulsa en Ayuda para información más detallada",
+      "body": "",
       "helpSrc": "procedimientos/labflow.md",
       "buttons": [
         { "label": "SÍ", "style": "yes", "next": "cobas_racks" },
@@ -29,9 +37,17 @@
       ]
     },
 
+    "informatica_2": {
+      "title": "Llamar INFORMÁTICA del HOSPITAL (2)",
+      "body": "",
+      "helpSrc": "procedimientos/informatica_2.md",
+      "pdfLabel": "Iniciar protocolo caída informática (2)",
+      "pdfUrl": "docs/protocolo_caida_informatica_1.pdf"
+    },
+
     "cobas_racks": {
       "title": "En Cobas Pro: ¿reconoce y analiza racks?",
-      "body": "Comprueba si reconoce racks y analiza las muestras correctamente.",
+      "body": "",
       "helpSrc": "procedimientos/cobas_racks.md",
       "buttons": [
         { "label": "SÍ", "style": "yes", "next": "transmite_gestlab" },
@@ -39,13 +55,33 @@
       ]
     },
 
+    "transmite_gestlab": {
+      "title": "¿Cobas Pro transmite resultados a Gestlab?",
+      "body": "",
+      "helpSrc": "procedimientos/transmite_gestlab.md",
+      "buttons": [
+        { "label": "SÍ", "style": "yes", "next": "todo_ok" },
+        { "label": "NO", "style": "no", "next": "transmite_labflow" }
+      ]
+    },
+
+    "transmite_labflow": {
+      "title": "¿El analizador transmite resultados a Labflow?",
+      "body": "",
+      "helpSrc": "procedimientos/transmite_labflow.md",
+      "buttons": [
+        { "label": "SÍ", "style": "yes", "next": "reset_gestlab_labflow" },
+        { "label": "NO", "style": "no", "next": "reset_labflow_analizador" }
+      ]
+    },
+
     "reset_labflow_analizador": {
-      "title": "Resetear Conexión LABFLOW-ANALIZADOR",
-      "body": "Sigue el procedimiento indicado.",
+      "title": "Resetear Conexión LABFLOW–ANALIZADOR",
+      "body": "",
       "helpSrc": "procedimientos/reset_labflow_analizador.md",
       "buttons": [
-        { "label": "FUNCIONA", "style": "yes", "next": "..." },
-        { "label": "NO FUNCIONA", "style": "no", "Llamar a ROCHE" }
+        { "label": "FUNCIONA", "style": "yes", "next": "todo_ok" },
+        { "label": "NO FUNCIONA", "style": "no", "next": "roche" }
       ]
     },
 
@@ -57,28 +93,8 @@
       "pdfUrl": "docs/protocolo_caida_informatica_1.pdf"
     },
 
-    "transmite_gestlab": {
-      "title": "¿Cobas Pro transmite resultados a Gestlab?",
-      "body": "Comprueba si los resultados del analizador llegan a Gestlab.",
-      "helpSrc": "procedimientos/transmite_gestlab.md",
-      "buttons": [
-        { "label": "SÍ", "style": "yes", "next": "todo_ok" },
-        { "label": "NO", "style": "no", "next": "transmite_labflow" }
-      ]
-    },
-
-    "transmite_labflow": {
-      "title": "¿El analizador transmite resultados a Labflow?",
-      "body": "Comprueba si Labflow recibe resultados del analizador.",
-      "helpSrc": "procedimientos/transmite_labflow.md",
-      "buttons": [
-        { "label": "SÍ", "style": "yes", "next": "reset_gestlab_labflow" },
-        { "label": "NO", "style": "no", "next": "reset_labflow_analizador" }
-      ]
-    },
-
     "reset_gestlab_labflow": {
-      "title": "Resetear conexión GESTLAB-LABFLOW",
+      "title": "Resetear conexión GESTLAB–LABFLOW",
       "body": "",
       "helpSrc": "procedimientos/reset_gestlab_labflow.md",
       "buttons": [
@@ -87,13 +103,12 @@
       ]
     },
 
-    "llamar_gestlab": {
-      "title": "Llamar a GESTLAB",
-      "body": "Contacta con el soporte de Gestlab para comunicar la incidencia.",
-      "help": "help_llamar_gestlab",
-      "buttons": [
-        { "label": "CONTINUAR", "style": "primary", "next": "todo_ok" }
-      ]
+    "gestlab_4": {
+      "title": "Llamar a GESTLAB (4)",
+      "body": "",
+      "helpSrc": "procedimientos/gestlab_4.md",
+      "pdfLabel": "Iniciar protocolo caída informática (4)",
+      "pdfUrl": "docs/protocolo_caida_informatica_1.pdf"
     },
 
     "todo_ok": {
@@ -102,76 +117,6 @@
       "buttons": [
         { "label": "REINICIAR", "style": "secondary", "next": "inicio" }
       ]
-    },
-
-"informatica_1": {
-  "title": "Llamar INFORMÁTICA del HOSPITAL (1)",
-  "body": "",
-  "helpSrc": "procedimientos/informatica_1.md",
-  "pdfLabel": "Iniciar protocolo caída informática (1)",
-  "pdfUrl": "docs/protocolo_caida_informatica_1.pdf"
-},
-
-"informatica_2": {
-  "title": "Llamar INFORMÁTICA del HOSPITAL (2)",
-  "body": "",
-  "helpSrc": "procedimientos/informatica_2.md",
-  "pdfLabel": "Iniciar protocolo caída informática (2)",
-  "pdfUrl": "docs/protocolo_caida_informatica_1.pdf"
-},
-
-    "help_gestlab": {
-      "title": "AYUDA — ¿FUNCIONA GESTLAB?",
-      "body": "Se refiere a si se puede entrar al programa.\n\nFunciona si:\n- Introduciendo usuario y contraseña entra y permite trabajar.\n\nNo funciona si:\n- Con usuario y contraseña correctos se queda colgado o da error.",
-      "buttons": []
-    },
-
-    "help_labflow": {
-      "title": "AYUDA — ¿FUNCIONA LABFLOW?",
-      "body": "Se refiere a si se puede entrar al programa.\n\nFunciona si:\n- Introduciendo usuario y contraseña entra y permite trabajar.\n\nNo funciona si:\n- Con usuario y contraseña correctos se queda colgado o da error.",
-      "buttons": []
-    },
-
-    "help_cobas_racks": {
-      "title": "AYUDA — Cobas Pro reconoce y analiza racks",
-      "body": "Comprueba que la petición exista y que el rack se procese sin alarmas.\nVerifica que registra pruebas y resultados.",
-      "buttons": []
-    },
-
-    "help_reset_labflow_analizador": {
-      "title": "AYUDA — Resetear conexión LABFLOW–ANALIZADOR",
-      "body": "Desde Labflow:\n- Monitorización → ICA → Monitorización ICA.\n- Desactivar el analizador.\n- Volver a habilitarlo.\n\nSi queda habilitado (check verde), prueba de nuevo.",
-      "buttons": []
-    },
-
-    "help_llamar_roche": {
-      "title": "AYUDA — Llamar ROCHE",
-      "body": "Registra incidencia por Navify o llama al SAT.\nIndica equipo y módulo afectados.\nSigue las instrucciones del técnico.",
-      "buttons": []
-    },
-
-    "help_transmite_gestlab": {
-      "title": "AYUDA — Cobas Pro transmite a Gestlab",
-      "body": "Comprueba que los resultados aparecen en el analizador.\nEspera unos minutos y verifica que llegan a Gestlab.",
-      "buttons": []
-    },
-
-    "help_transmite_labflow": {
-      "title": "AYUDA — El analizador transmite a Labflow",
-      "body": "Busca la petición en Labflow y comprueba si aparecen las pruebas y resultados.",
-      "buttons": []
-    },
-
-    "help_reset_gestlab_labflow": {
-      "title": "AYUDA — Resetear conexión GESTLAB–LABFLOW",
-      "body": "Desde Gestlab:\n- Procesos → Conexión con analizadores.\n- Desactivar conexión.\n- Esperar unos segundos.\n- Activar conexión.\n\nVerifica reenviando resultados.",
-      "buttons": []
-    },
-
-    "help_llamar_gestlab": {
-      "title": "AYUDA — Llamar GESTLAB",
-      "body": "Contacta con soporte de Gestlab.\nProbablemente haya que reiniciar comunicaciones.",
-      "buttons": []
     }
   }
 }
