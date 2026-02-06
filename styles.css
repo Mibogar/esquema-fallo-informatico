@@ -124,8 +124,8 @@ body {
   border: 1px solid transparent;
   cursor: pointer;
 
-  padding: 16px 22px;          /* ⬅️ MÁS GRANDES */
-  border-radius: 14px;
+  padding: 24px 30px;          /* ⬅️ MÁS GRANDES */
+  border-radius: 16px;
 
   font-size: 1.05rem;          /* ⬅️ texto mayor */
   font-weight: 650;
