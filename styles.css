@@ -1,237 +1,275 @@
-:root{
-  --bg:#0b1220;
-  --bg2:#0f172a;
-  --card: rgba(18,27,46,.96);
-  --text:#eaf0ff;
-  --muted:#b9c5e6;
-  --border:rgba(255,255,255,.14);
-  --shadow: 0 18px 46px rgba(0,0,0,.38);
-
-  --primary: rgba(99,102,241,.28);
-  --primaryBorder: rgba(99,102,241,.42);
-
-  --yes: rgba(34,197,94,.26);
-  --yesBorder: rgba(34,197,94,.40);
-
-  --no: rgba(239,68,68,.26);
-  --noBorder: rgba(239,68,68,.40);
-
-  --secondary: rgba(148,163,184,.16);
-  --secondaryBorder: rgba(148,163,184,.26);
-
-  --helpBg: rgba(148,163,184,.10);
-  --helpBorder: rgba(148,163,184,.22);
-
-  --focus: rgba(56,189,248,.55);
+/* =========================
+   Reset básico
+========================= */
+* {
+  box-sizing: border-box;
 }
 
-/* Reset */
-*{ box-sizing:border-box; }
-
-html, body{
-  height:100%;
+html, body {
+  height: 100%;
 }
 
-body{
-  margin:0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  color: var(--text);
-  background:
-    radial-gradient(1200px 800px at 18% 12%, #1b2a55 0%, var(--bg) 56%),
-    radial-gradient(900px 600px at 86% 22%, #3a1d62 0%, transparent 60%),
-    linear-gradient(180deg, var(--bg2), var(--bg));
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  /* Fondo claro (antes estaba oscuro) */
+  background: radial-gradient(1200px 700px at 20% 20%, #ffffff 0%, #f4f7fb 45%, #e9eef5 100%);
+  color: #1f2937;
+
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
-/* App container */
-#app{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding: 18px;
+/* Contenedor principal */
+#app {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 16px;
 }
 
-/* Card */
-.card{
-  width: min(900px, 100%);
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  box-shadow: var(--shadow);
-  padding: 18px;
+/* =========================
+   Tarjetas (pantallas)
+========================= */
+.card {
+  width: 100%;
+  max-width: 860px;
+
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.10);
+  border-radius: 18px;
+
+  padding: 26px 26px 22px;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.10);
 }
 
-/* Top bar */
-.topbar{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+.card.help-card {
+  /* misma estética que card, por si la usas en ayuda */
+  background: #ffffff;
+}
+
+/* Barra superior */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 10px;
-  margin-bottom: 8px;
+  margin-bottom: 18px;
 }
 
-.topbar .btn.ghost{
-  padding: 8px 12px;
-  font-size: 14px;
-  font-weight: 750;
-  border-radius: 14px;
+/* Grupo de botones en la barra */
+.top-bar .left,
+.top-bar .right {
+  display: flex;
+  gap: 10px;
 }
 
-/* Title */
-.title{
-  font-size: clamp(24px, 3.6vw, 44px);
-  line-height: 1.1;
-  margin: 10px 0 8px 0;
+/* Si tu app no crea wrappers left/right, esto mantiene el layout */
+.top-bar > button {
+  margin-right: 10px;
+}
+.top-bar > button:last-child {
+  margin-right: 0;
 }
 
-/* Texto normal */
-.body{
-  margin: 0 0 6px 0;
-  color: var(--muted);
-  font-size: 16px;
-  line-height: 1.5;
-  white-space: pre-wrap;
+/* Título */
+.card h1 {
+  margin: 0 0 14px;
+  font-size: clamp(1.55rem, 2.2vw, 2.15rem);
+  line-height: 1.15;
+  letter-spacing: 0.3px;
+  color: #0f172a;
 }
 
-/* Botón ayuda */
-.helpRow{
-  display:flex;
-  justify-content:flex-start;
-  margin: 6px 0 10px 0;
+/* Texto principal */
+.card p {
+  margin: 0 0 14px;
+  font-size: 1.02rem;
+  line-height: 1.55;
+  color: #334155;
 }
 
-.btn.help{
-  width: auto;
-  padding: 8px 12px;
-  font-size: 14px;
-  font-weight: 700;
-  border-radius: 14px;
-  background: var(--helpBg);
-  border: 1px solid var(--helpBorder);
-  color: var(--text);
+/* =========================
+   Filas de acciones (Ayuda / PDF)
+========================= */
+.actions-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 12px 0 14px;
 }
 
-/* Botones principales */
-.buttons{
-  display:grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+/* =========================
+   Contenedor de botones (SÍ/NO etc.)
+========================= */
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
   gap: 12px;
-  margin-top: 12px;
+  margin-top: 16px;
 }
 
-@media (max-width: 560px){
-  .card{
-    padding: 14px;
-    border-radius: 18px;
-  }
-  .buttons{
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Botones base */
-.btn{
+/* =========================
+   Botones (base)
+========================= */
+.btn {
   appearance: none;
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 16px;
+  border: 1px solid transparent;
   cursor: pointer;
-  font-size: 18px;
-  font-weight: 850;
-  background: rgba(255,255,255,.08);
-  color: var(--text);
-  transition: transform .04s ease, filter .12s ease, background .12s ease;
+
+  padding: 12px 16px;
+  border-radius: 12px;
+
+  font-size: 0.98rem;
+  font-weight: 650;
+  letter-spacing: 0.2px;
+
+  transition: transform 0.06s ease, filter 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.btn:hover{ filter: brightness(1.08); }
-.btn:active{ transform: translateY(1px); }
-
-/* Variantes */
-.btn.primary{
-  background: var(--primary);
-  border-color: var(--primaryBorder);
-}
-.btn.yes{
-  background: var(--yes);
-  border-color: var(--yesBorder);
-  color: #07150c;
-}
-.btn.no{
-  background: var(--no);
-  border-color: var(--noBorder);
-}
-.btn.secondary{
-  background: var(--secondary);
-  border-color: var(--secondaryBorder);
-}
-.btn.ghost{
-  background: transparent;
-  border-color: var(--border);
+.btn:active {
+  transform: translateY(1px);
 }
 
-/* Deshabilitado */
-.btn[disabled]{
-  opacity:.55;
-  cursor:not-allowed;
+/* Botón ancho (si lo usas en "continuar") */
+.btn.wide {
+  width: 100%;
+  justify-content: center;
 }
 
-/* === VISOR DE PROCEDIMIENTOS (Markdown) === */
-.helpText{
-  margin-top: 8px;
-  padding: 14px;
+/* Tamaños (para "Ayuda" pequeño) */
+.btn.small {
+  padding: 8px 10px;
+  border-radius: 10px;
+  font-size: 0.86rem;
+  font-weight: 650;
+}
+
+/* =========================
+   Colores por tipo
+   (mantén tu semántica: verde bueno, rojo malo, azul ayuda)
+========================= */
+
+/* Verde (SÍ / FUNCIONA) */
+.btn.yes {
+  background: #16a34a;
+  color: #ffffff;
+  box-shadow: 0 10px 18px rgba(22, 163, 74, 0.22);
+}
+.btn.yes:hover {
+  filter: brightness(1.03);
+}
+
+/* Rojo (NO / NO FUNCIONA) */
+.btn.no {
+  background: #dc2626;
+  color: #ffffff;
+  box-shadow: 0 10px 18px rgba(220, 38, 38, 0.22);
+}
+.btn.no:hover {
+  filter: brightness(1.03);
+}
+
+/* Azul (secundario / reiniciar / volver si quieres) */
+.btn.secondary {
+  background: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 10px 18px rgba(37, 99, 235, 0.18);
+}
+.btn.secondary:hover {
+  filter: brightness(1.03);
+}
+
+/* Botón tipo "ayuda" (azul más suave) */
+.btn.help {
+  background: #1d4ed8;
+  color: #ffffff;
+  box-shadow: 0 10px 18px rgba(29, 78, 216, 0.18);
+}
+.btn.help:hover {
+  filter: brightness(1.03);
+}
+
+/* Botón PDF (azul distinto pero compatible) */
+.btn.pdf {
+  background: #0ea5e9;
+  color: #ffffff;
+  box-shadow: 0 10px 18px rgba(14, 165, 233, 0.16);
+}
+.btn.pdf:hover {
+  filter: brightness(1.03);
+}
+
+/* Si tu app usa .primary */
+.btn.primary {
+  background: #0f172a;
+  color: #ffffff;
+  box-shadow: 0 10px 18px rgba(15, 23, 42, 0.18);
+}
+.btn.primary:hover {
+  filter: brightness(1.03);
+}
+
+/* =========================
+   Caja de ayuda (Markdown render)
+========================= */
+.help-box {
+  margin-top: 12px;
+  padding: 14px 16px;
+
   border-radius: 14px;
-  background: rgba(0,0,0,.35);
-  border: 1px solid var(--border);
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: #f8fafc;
 
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 14.5px;
-  line-height: 1.5;
-
-  white-space: pre-wrap;
-  word-break: break-word;
-}
-/* ===== Estilos para Markdown en procedimientos ===== */
-
-.helpMarkdown h1 {
-  font-size: 28px;
-  margin: 16px 0 10px;
-  border-bottom: 1px solid rgba(255,255,255,.2);
-  padding-bottom: 6px;
+  color: #0f172a;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
 }
 
-.helpMarkdown h2 {
-  font-size: 22px;
-  margin: 18px 0 8px;
+/* Estilo de markdown dentro de la ayuda */
+.help-box h1, .help-box h2, .help-box h3 {
+  margin: 0.2rem 0 0.6rem;
+  color: #0f172a;
 }
 
-.helpMarkdown h3 {
-  font-size: 18px;
-  margin: 14px 0 6px;
+.help-box p {
+  margin: 0.4rem 0;
+  color: #1f2937;
 }
 
-.helpMarkdown p {
-  margin: 8px 0;
-  line-height: 1.6;
-  color: var(--text);
+.help-box ul, .help-box ol {
+  margin: 0.4rem 0 0.4rem 1.2rem;
 }
 
-.helpMarkdown strong {
-  font-weight: 800;
+.help-box code {
+  background: rgba(15, 23, 42, 0.08);
+  padding: 0.15rem 0.35rem;
+  border-radius: 8px;
 }
 
-.helpMarkdown ul,
-.helpMarkdown ol {
-  margin: 8px 0 8px 22px;
-}
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 540px) {
+  .card {
+    padding: 20px 18px 18px;
+    border-radius: 16px;
+  }
 
-.helpMarkdown li {
-  margin: 6px 0;
-}
+  .buttons {
+    gap: 10px;
+  }
 
-.helpMarkdown {
-  margin-top: 10px;
-  padding: 14px;
-  background: rgba(0,0,0,.35);
-  border: 1px solid var(--border);
-  border-radius: 14px;
+  .btn {
+    width: 100%;
+  }
+
+  /* La barra superior en móvil */
+  .top-bar {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
 }
