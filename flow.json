@@ -77,7 +77,7 @@
 
     "reset_labflow_analizador": {
       "title": "1.Resetear Conexión LABFLOW–ANALIZADOR 2.Comprobar estado del HOST y cable de red",
-      "body": "Pulsa el botón de (Ayuda) para saber como realizar estas acciones",
+      "body": "Pulsa el botón de (Ayuda) para saber como realizar estas acciones.",
       "helpSrc": "procedimientos/reset_labflow_analizador.md",
       "buttons": [
         { "label": "FUNCIONA", "style": "yes", "next": "transmite_gestlab" },
