@@ -4,15 +4,15 @@
 
 Cada usuario tiene su nombre de usuario y contraseña.
 
-**Procesos -> Conexión con analizadores**
+- **Procesos -> Conexión con analizadores**
 
 Buscar en la parte izquierda el analizador LABFLOW
 
-**Desactivar conexión** 
+- **Desactivar conexión** 
 
 Esperar 1 minuto
 
-**Activar conexión**
+- **Activar conexión**
 
 
 ## FUNCIONA (teóricamente)
