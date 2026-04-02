@@ -1,3 +1,5 @@
+1. Resetear conexión Labflow - Analizador
+
 ## Entrar en Labflow
 
 - **Escritorio -> Aplicaciones de equipo -> INFINITY o LABFLOW -> Introducir usuario y contraseña.**
@@ -10,6 +12,11 @@ Contraseña: Usuario1
 el check verde de la columna Habilitado pasa a un aspa roja.
 
 - **Habilitar**
+
+2. Comprobar el HOST del analizador. Ver si está activado.
+Por ejemplo, en el Cobas pro es: **Panorámica -> HOST (debe estar en verde para que esté activado)**
+
+Comprobar el cable de red. Que no se haya desconectado.
 
 ## FUNCIONA
 Si el aspa roja vuelve a check verde.
